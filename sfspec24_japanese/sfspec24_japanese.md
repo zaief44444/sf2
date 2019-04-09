@@ -1126,6 +1126,9 @@ Vibrato LFOの三角波の周波数を絶対cent単位で表すもの. 値0な�
 #### 28 : decayModEnv
 ディケイの段階でModulation Envの変化が100%完了するまでのを絶対timecent単位で表したもの. 0の値なら1秒のとなる. Modulation Envは, ディケイの段階ではサステインの高さまでまっすぐ向かって傾いている. もしサステインの高さが0なら, decayModEnvはディケイにかかる時間となる. 0の値なら1秒の負の値ならディレイは1秒より短く, 正の値ならディレイは1秒より長くなる. 値が最小値(-32768)であるときは慣習的にディレイはないことになる. 例えば, 10msecのディレイならば holdModEnv = 1200log2(.01) = -7973となる.
 
+ジェネレーターは他にもたくさんあるが和訳が完成していない. そこは原文を参照すること.
+ここから8.2まで和訳していない. 
+
 ## 8.2 Modulator Source Enumerators
 Section8.2ではSoundFontモジュレーターenumを定義するが, Section9.5ではSoundFontモジュレーターの動作原理を記述している.
 sfModulatorのenum値は実際には,index値とsource typeやsource palletesを定めるbitフィールドを組み合わせたものであり,index値はジェネレーターで言うsfGeneratorのenum値に当たるものでModulator sourceを指定する実質的な値である.
