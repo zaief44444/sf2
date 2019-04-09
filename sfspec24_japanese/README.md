@@ -64,5 +64,7 @@ IssueやTwitter(@zaief_44444)などで報告してくれるとありがたい.
 * Modulatorのtypeとtransform enumrationを混同している可能性がある(bit11からbit15は使われないと言っていたのが怪しい)
 
 ## SoundFont2の仕様について参考になるサイト
-うつぽかずらさん(@vstcpp)のサイト なんでもわかりやすい表にまとめられており詳しい. 
+うつぽかずら さん(@vstcpp)のサイト
+http://vstcpp.wpblog.jp/?page_id=2076
+なんでもわかりやすい表にまとめられており詳しい. 
 @gocha さんが書いた記事 https://qiita.com/gocha/items/f3e7f216a071808e9e2d sf2のファイルフォーマットについて詳しい. 終端条件などの表が見やすい.
