@@ -116,6 +116,39 @@ SoundFont®とSoundFontのロゴはE-mu System, Inc.の商標として登録さ�
             - [26 : attackModEnv](#26--attackmodenv)
             - [27 : holdModEnv](#27--holdmodenv)
             - [28 : decayModEnv](#28--decaymodenv)
+            - [29 : sustainModEnv](#29--sustainmodenv)
+            - [30 : releaseModEnv](#30--releasemodenv)
+            - [31 : keynumToModEnvHold](#31--keynumtomodenvhold)
+            - [32 : keynumToModEnvDecay](#32--keynumtomodenvdecay)
+            - [33 : delayVolEnv](#33--delayvolenv)
+            - [34 : attackVolEnv](#34--attackvolenv)
+            - [35 : holdVolEnv](#35--holdvolenv)
+            - [36 : decayVolEnv](#36--decayvolenv)
+            - [37 : sustainVolEnv](#37--sustainvolenv)
+            - [38 : releaseVolEnv](#38--releasevolenv)
+            - [39 : keynumToVolEnvHold](#39--keynumtovolenvhold)
+            - [40 : keynumToVolEnvDecay](#40--keynumtovolenvdecay)
+            - [41 : instrument](#41--instrument)
+            - [42 : reserved](#42--reserved)
+            - [43 : keyRange](#43--keyrange)
+            - [44 : velRange](#44--velrange)
+            - [45 : startloopAddrsCoarseOffset](#45--startloopaddrscoarseoffset)
+            - [46 : keynum](#46--keynum)
+            - [47 : velocity](#47--velocity)
+            - [48 : initalAttenuation](#48--initalattenuation)
+            - [49 : reserved2](#49--reserved2)
+            - [50 : endloopCoarseOffset](#50--endloopcoarseoffset)
+            - [51 : coarseTune](#51--coarsetune)
+            - [52 : fineTune](#52--finetune)
+            - [53 : sampleID](#53--sampleid)
+            - [54 : sampleModes](#54--samplemodes)
+            - [55 : reserved3](#55--reserved3)
+            - [56 : scaleTuning](#56--scaletuning)
+            - [57 : exclusiveClass](#57--exclusiveclass)
+            - [58 : overridingRootKey](#58--overridingrootkey)
+            - [59 : unused5](#59--unused5)
+            - [60 : endOver](#60--endover)
+        - [8.1.3 ジェネレーターのまとめ](#813-ジェネレーターのまとめ)
     - [8.2 Modulator Source Enumerators](#82-modulator-source-enumerators)
         - [8.2.1 Source Enumerator Controller Palettes](#821-source-enumerator-controller-palettes)
         - [8.2.2 Source Directions](#822-source-directions)
@@ -483,29 +516,29 @@ pdta_ck :=
     * shdr_ck--------サンプルヘッダー達
 
 ## 4.2 SoundFont2 RIFFファイル形式 Level 2
-ifil_ck := ifil(iver_rec)------------e.g. 2.01
-isng_ck := isng(szSoundEngine:ZSTR)--e.g. "EMU8000"
-irom_ck := irom(szROM:ZSTR)----------e.g. "1MGM"
-iver_ck := iver(iver_rec)------------e.g. 2.08
-INAM_ck := INAM(szName:ZSTR)---------e.g. "General MIDI"
-ICRD_ck := ICRD(szDate:ZSTR)---------e.g. "July 15, 1997"
-IENG_ck := IENG(szName:ZSTR)---------e.g. "John Q. Sounddesigner"
-IPRD_ck := IPRD(szProduct:ZSTR)------e.g. "SBAWE64 Gold"
-ICOP_ck := ICOP(szCopyright:ZSTR)----e.g. "Copyright (c) 1997  E-mu Systems, Inc."
-ICMT_ck := ICMT(szComment:ZSTR)------e.g. "This is a comment"
-ISFT_ck := ISFT(szTools:ZSTR)--------e.g. ":Preditor 2.00a:Vienna SF Studio 2.0:"
+ifil_ck := ifil(iver_rec)------------e.g. 2.01  
+isng_ck := isng(szSoundEngine:ZSTR)--e.g. "EMU8000"  
+irom_ck := irom(szROM:ZSTR)----------e.g. "1MGM"  
+iver_ck := iver(iver_rec)------------e.g. 2.08  
+INAM_ck := INAM(szName:ZSTR)---------e.g. "General MIDI"  
+ICRD_ck := ICRD(szDate:ZSTR)---------e.g. "July 15, 1997"  
+IENG_ck := IENG(szName:ZSTR)---------e.g. "John Q. Sounddesigner"  
+IPRD_ck := IPRD(szProduct:ZSTR)------e.g. "SBAWE64 Gold"  
+ICOP_ck := ICOP(szCopyright:ZSTR)----e.g. "Copyright (c) 1997  E-mu Systems, Inc."  
+ICMT_ck := ICMT(szComment:ZSTR)------e.g. "This is a comment"  
+ISFT_ck := ISFT(szTools:ZSTR)--------e.g. ":Preditor 2.00a:Vienna SF Studio 2.0:"  
 
-smpl_ck := smpl(smpl:SHORT)----------デジタルオーディオデータの16bit固定長エンコード
+smpl_ck := smpl(smpl:SHORT)----------デジタルオーディオデータの16bit固定長エンコード  
 
-phdr_ck := phdr(phdr_rec)
-pbag_ck := pbag(pbag_rec)
-pmod_ck := pmod(pmod_rec)
-pgen_ck := pgen(pgen_rec)
-inst_ck := inst(inst_rec)
-ibag_ck := ibag(ibag_rec)
-imod_ck := imod(imod_rec)
-igen_ck := igen(igen_rec)
-shdr_ck := shdr(shdr_rec)
+phdr_ck := phdr(phdr_rec)  
+pbag_ck := pbag(pbag_rec)  
+pmod_ck := pmod(pmod_rec)  
+pgen_ck := pgen(pgen_rec)  
+inst_ck := inst(inst_rec)  
+ibag_ck := ibag(ibag_rec)  
+imod_ck := imod(imod_rec)  
+igen_ck := igen(igen_rec)  
+shdr_ck := shdr(shdr_rec)  
 ## 4.2 SoundFont2 RIFFファイル形式 Level 3
 ```c
 struct sfVersionTag
@@ -794,18 +827,18 @@ struct sfModList
 ```
 プリセットゾーンのwModNdxはそのプリセットゾーンで使われる最初のモジュレーターのインデックスであり, プリセットゾーンで使われるモジュレーターの数は (次のプリセットゾーンのwModNdx) - (現在のプリセットゾーンのwModNdx) で求められる. もしこの差が0ならばそのプリセットゾーンにはモジュレーターが1つもないことを意味する. 
 
-sfModSrcOperはSFModulator列挙型の値をとり, 未知, 未定義であるものは無視される. sfModSrcOperがlinkにセットされているがどのモジュレータからもリンクされていないものは無視される. sfModSrcOperの値はのデータの入力元を指す. この列挙子は2バイト長であることに注意せよ.
+sfModSrcOperはSFModulator列挙型の値をとり, 未知, 未定義であるものは無視される. sfModSrcOperがlinkにセットされているがどのモジュレータからもリンクされていないものは無視される. sfModSrcOperの値はのデータの入力元を指す. この列挙子は2バイト長であることに注意せよ.  
 (訳注: "sfModSrcOperがlinkにセットされている" の部分が原文では"sfModAmtSrcOperがlinkにセットされている"という致命的な誤記になっている. 肝心なところを間違えないで欲しい.)
 
-sfModDestOperはモジュレーターの出力先を指す. 出力先は, SFGenerator列挙型の値, もしくは他のモジュレーターのsfModSrcOperへのリンクのどちらかとなる. sfModDestOperの最上位bitが0ならば前者, 1ならば後者である. 後者の場合, 残りの15個のbitは, このModulatorの出力を入力元とするモジュレーターへのインデックスを表し, そのインデックスはこのプリセットゾーンの最初のモジュレーターからのインデックスである. 未知や未定義の値は無視される. 出力先をリンクとするモジュレーターであり, リンクが指し示す(他のモジュレーターの)インデックスが, そのプリセットゾーンのモジュレーターの総数を超える場合は無視される. リンクで繋がれているモジュレーターで循環リンクの部分になっているものは無視される. この列挙子は2バイト長であることに注意せよ. 
+sfModDestOperはモジュレーターの出力先を指す. 出力先は, SFGenerator列挙型の値, もしくは他のモジュレーターのsfModSrcOperへのリンクのどちらかとなる. sfModDestOperの最上位bitが0ならば前者, 1ならば後者である. 後者の場合, 残りの15個のbitは, このModulatorの出力を入力元とするモジュレーターへのインデックスを表し, そのインデックスはこのプリセットゾーンの最初のモジュレーターからのインデックスである. 未知や未定義の値は無視される. 出力先をリンクとするモジュレーターであり, リンクが指し示す(他のモジュレーターの)インデックスが, そのプリセットゾーンのモジュレーターの総数を超える場合は無視される. リンクで繋がれているモジュレーターで循環リンクの部分になっているものは無視される. この列挙子は2バイト長であることに注意せよ.  
 (訳注: 原文では"The latter is indicated by the top bit of
 the sfModDestOper field being set, the other 15 bits designates the index value of the modulator whose source should be the
 output of the current modulator RELATIVE TO the first modulator in the instrument zone."とあるがまず致命的な誤記が1つありinstrumentでなくpresetが正しいだろう, RELATIVE TOはthe current modulatorでなくthe index valueを修飾するものだと気づかないと理解できない難解な文である. この段落はおそらくこの仕様書の中でも最も不親切である. まずSFModulatorやSFGenerator, SFTransform列挙型が突然現れ, その具体的な中身を何も知らないまま突然リンクという言葉が出てくる. さらにsfModDestOperはSFGenerator列挙型でありながら最上位bitが1ならばSFGenerator型でなくなるので, 不親切設計である. リンクについては, ジェネレーターに作用するモジュレーターだけでなく, ほかのモジュレーターに連鎖的に作用するモジュレーターもあるということを理解する必要がある. その詳細は今後のセクションにあるので, そこでSFModulatorやSFGenerator, SFTransform列挙型について理解を深めてもう一度読むのがいいだろう. リンク先として指定できるのは, __そのプリセットゾーン内__ のモジュレーターのみということを説明せずに暗黙的に前提として説明しているのも不親切である. (これは読み慣れた頃にようやく文脈から推測できることであるが) )
 
-SHORT modAmountは符号付きの値で入力に対する出力の度合いを示す. A zero value indicates there is no fixed amount. 
+SHORT modAmountは符号付きの値で入力に対する出力の度合いを示す. A zero value indicates there is no fixed amount.  
 (訳未完了: どんな入力に対しても出力しないという意味だとは思うが, fixedという形容詞がついていることからfixedじゃないamountがあるかもしれないという疑いから訳を決めきれていない)
 
-sfModAmtSrcOperはsfModulator列挙型の値をとる. 未知や未定義の値は無視される. sfModAmtSrcOperがlinkにセットされている場合そのモジュレーターは無視される. sfModAmtSrcOperで指定されたモジュレーター入力が, sfModSrcOperで指定されたモジュレーター入力に対する出力の度合いをコントロールすることになる. この列挙子は2バイト長であることに注意せよ.
+sfModAmtSrcOperはsfModulator列挙型の値をとる. 未知や未定義の値は無視される. sfModAmtSrcOperがlinkにセットされている場合そのモジュレーターは無視される. sfModAmtSrcOperで指定されたモジュレーター入力が, sfModSrcOperで指定されたモジュレーター入力に対する出力の度合いをコントロールすることになる. この列挙子は2バイト長であることに注意せよ.  
 (訳注: 原文では"This value indicates the degree to which the source
 modulates the destination is to be controlled by the specified modulation source. "これは原文の中でも最も難解な文の1つである上に, 不正確な表現もある. まずindicates the degreeと書いているが, indicatesにかかるのはthe degree to ...と続く文全体のことである. これがthat節省略のせいでthe degreeだけにかかっていると勘違いさせる引っ掛け文になっている上に無駄に受動態を使っているせいでthat節の主語が長すぎて追いにくい. さらに, sourceと言う単語が二回出ているが形容詞が全然なくsfModSrcOperかsfModAmtSrcOperのどちらを指しているのかも文脈から判断しなくてはならない. さらに, valueはあくまでもモジュレーターを指すものでしかないから, その列挙型の変数の役割を説明するのにvalue indicatesでは不正確である. 例の謎の資料では表現を"This enumerator indicates that the specified modulation source controls the degree to
 which the source modulates the destination."と改めているほどである. )
@@ -845,6 +878,7 @@ typedef union
     WORD wAmount;
 } genAmountType;
 ```  
+
 (訳注: 本来はここに次の説明が書かれるべきだが原文では抜かれている. プリセットゾーンのwGenNdxはそのプリセットゾーンで使われる最初のモジュレーターのインデックスであり, プリセットゾーンで使われるモジュレーターの数は (次のプリセットゾーンのwGenNdx) - (現在のプリセットゾーンのwGenNdx) で求められる. もしこの差が0ならばそのプリセットゾーンにはジェネレーターが1つもないことを意味する.)
 
 sfGen OperはSFGenerator列挙型の値をとる. 未知や未定義の値は無視される. この値はジェネレーターの種類を指す. この列挙子は2バイトの長さを持つことに注意せよ.
@@ -872,7 +906,7 @@ struct sfInst
 ```
 ASCII文字フィールドのachInstNameにはインストゥルメント名のASCII文字列が入り, 余った文字フィールドは値0のバイトで埋められる. インストゥルメント名は大文字と小文字を区別する. 識別を可能にするためにSoundFont互換バンクのインストゥルメント名は常に固有のものとする. しかし, あるバンクが同一の名前のインストゥルメントを持っている異常な場合は, インストゥルメントは破棄せず, そのまま読み込むか, できれば固有の名前に変更するかのどちらかをするものとする.
 
-WORD wInstBagNdxはIBAGサブチャンク内のインストゥルメントゾーンリストのインデックスである. インストゥルメントゾーンリストはインストゥルメントリストの順番通りで, インストゥルメントのインデックスが増加するに従ってインストゥルメントbagのインデックスも単調増加する. IBAGサブチャンクのバイト数は4 × (終端インストゥルメント(EOI)のwInstBagNdxの値 + 1)となる. もしインストゥルメントbagのインデックスが単調増加でなかったり, 終端インストゥルメントのwInstNdxの値がIBAGサブチャンクのサイズと不整合な場合は, ファイルは構造的な欠陥を持ちロード時に拒絶されるものとする. 終端インストゥルメント以外の全てのインストゥルメントは少なくとも1つのゾーンを持たなくてはならない. ゾーンのないインストゥルメントは無視されるものとする. 
+WORD wInstBagNdxはIBAGサブチャンク内のインストゥルメントゾーンリストのインデックスである. インストゥルメントゾーンリストはインストゥルメントリストの順番通りで, インストゥルメントのインデックスが増加するに従ってインストゥルメントbagのインデックスも単調増加する. IBAGサブチャンクのバイト数は4 × (終端インストゥルメント(EOI)のwInstBagNdxの値 + 1)となる. もしインストゥルメントbagのインデックスが単調増加でなかったり, 終端インストゥルメントのwInstNdxの値がIBAGサブチャンクのサイズと不整合な場合は, ファイルは構造的な欠陥を持ちロード時に拒絶されるものとする. 終端インストゥルメント以外の全てのインストゥルメントは少なくとも1つのゾーンを持たなくてはならない. ゾーンのないインストゥルメントは無視されるものとする.  
 (訳注: 原文では preset with no zonesと誤記になっている. )
 
 sfInstの終端レコードは参照されず, 最後のインストゥルメントが持つゾーンの数を求めるための, 終端wInstBagNdxのみを与えるために存在する. 他の全ての値は慣習的に0であるが, 例外的にachInstNameはインストゥルメントの終わりを示すために"EOI"としてもよい.
@@ -880,7 +914,7 @@ sfInstの終端レコードは参照されず, 最後のインストゥルメン
 もしINSTサブチャンクがなかったり, 2つ以上レコードを含んでいなかったり, サイズが22バイトの倍数でない場合, ファイルはstructurally unsoundとして拒絶されるものとする. instサブチャンクにある全てのインストゥルメントは典型的にプリセットゾーンから参照される. しかし, どこからも参照されないインストゥルメント(孤立インストゥルメント)を含んでいてもファイルは拒絶されないものとする. SoundFont互換アプリケーションはユーザーの好みで孤立インストゥルメントを無視したり除去したりどちらでも良い.
 
 ## 7.7 IBAGサブチャンク
-IBAGサブチャンクは必須サブチャンクで, SoundFont互換ファイル内の全てのインストゥルメントゾーンをリストする. 長さは常に4バイトの倍数で, それぞれのインストゥルメントゾーンに1つのレコード, さらに1つの終端レコードを持ち, レコードは次のような構造を持つ: 
+IBAGサブチャンクは必須サブチャンクで, SoundFont互換ファイル内の全てのインストゥルメントゾーンをリストする. 長さは常に4バイトの倍数で, それぞれのインストゥルメントゾーンに1つのレコード, さらに1つの終端レコードを持ち, レコードは次のような構造を持つ:  
 (訳注: つまり(全てのインストゥルメントゾーンの数)+1がレコードの数となる)
 ```c
 struct sfInstBag
@@ -911,18 +945,18 @@ struct sfModList
     SFTransform sfModTransOper;
 };
 ```
-インストゥルメントゾーンのwModNdxはそのインストゥルメントゾーンで使われる最初のモジュレーターのインデックスであり, インストゥルメントゾーンで使われるモジュレーターの数は (次のインストゥルメントゾーンのwInstModNdx) - (現在のインストゥルメントゾーンのwInstModNdx) で求められる. もしこの差が0ならばそのインストゥルメントゾーンにはモジュレーターが1つもないことを意味する. 
+インストゥルメントゾーンのwModNdxはそのインストゥルメントゾーンで使われる最初のモジュレーターのインデックスであり, インストゥルメントゾーンで使われるモジュレーターの数は (次のインストゥルメントゾーンのwInstModNdx) - (現在のインストゥルメントゾーンのwInstModNdx) で求められる. もしこの差が0ならばそのインストゥルメントゾーンにはモジュレーターが1つもないことを意味する.   
 (訳注: 原文ではwInstModNdxがwModNdxと誤記になっている)
 
-sfModSrcOperはSFModulator列挙型の値をとり, 未知, 未定義であるものは無視される. sfModSrcOperがlinkにセットされているがどのモジュレータからもリンクされていないものは無視される. sfModSrcOperの値はのデータの入力元を指す. この列挙子は2バイト長であることに注意せよ.
+sfModSrcOperはSFModulator列挙型の値をとり, 未知, 未定義であるものは無視される. sfModSrcOperがlinkにセットされているがどのモジュレータからもリンクされていないものは無視される. sfModSrcOperの値はのデータの入力元を指す. この列挙子は2バイト長であることに注意せよ.  
 (訳注: ここでもやはり"sfModSrcOperがlinkにセットされている" の部分が原文では"sfModAmtSrcOperがlinkにセットされている"という致命的な誤記になっている. )
 
-sfModDestOperはモジュレーターの出力先を指す. 出力先は, SFGenerator列挙型の値, もしくは他のモジュレーターのsfModSrcOperへのリンクのどちらかとなる. sfModDestOperの最上位bitが0ならば前者, 1ならば後者である. 後者の場合, 残りの15個のbitは, このModulatorの出力を入力元とするモジュレーターへのインデックスを表し, そのインデックスはこのインストゥルメントゾーンの最初のモジュレーターからのインデックスである. 未知や未定義の値は無視される. 出力先をリンクとするモジュレーターであり, リンクが指し示す(他のモジュレーターの)インデックスが, そのインストゥルメントゾーンのモジュレーターの総数を超える場合は無視される. リンクで繋がれているモジュレーターで循環リンクの部分になっているものは無視される. この列挙子は2バイト長であることに注意せよ.  この列挙子は2バイト長であることに注意せよ. 
+sfModDestOperはモジュレーターの出力先を指す. 出力先は, SFGenerator列挙型の値, もしくは他のモジュレーターのsfModSrcOperへのリンクのどちらかとなる. sfModDestOperの最上位bitが0ならば前者, 1ならば後者である. 後者の場合, 残りの15個のbitは, このModulatorの出力を入力元とするモジュレーターへのインデックスを表し, そのインデックスはこのインストゥルメントゾーンの最初のモジュレーターからのインデックスである. 未知や未定義の値は無視される. 出力先をリンクとするモジュレーターであり, リンクが指し示す(他のモジュレーターの)インデックスが, そのインストゥルメントゾーンのモジュレーターの総数を超える場合は無視される. リンクで繋がれているモジュレーターで循環リンクの部分になっているものは無視される. この列挙子は2バイト長であることに注意せよ.  この列挙子は2バイト長であることに注意せよ.  
 (訳注: リンク先として指定できるのは, __そのインストゥルメントゾーン内__ のモジュレーターのみということを説明せずに暗黙的に前提として説明しているのので注意せよ. )
 
 SHORT modAmountは符号付きの値で入力に対する出力の度合いを示す. A zero value indicates there is no fixed amount. (訳未完了: どんな入力に対しても出力しないという意味だとは思うが, fixedという形容詞がついていることからfixedじゃないamountがあるかもしれないという疑いから訳を決めきれていない)
 
-sfModAmtSrcOperはsfModulator列挙型の値をとる. 未知や未定義の値は無視される. sfModAmtSrcOperがlinkにセットされている場合そのモジュレーターは無視される. sfModAmtSrcOperで指定されたモジュレーター入力が, sfModSrcOperで指定されたモジュレーター入力に対する出力の度合いをコントロールすることになる. この列挙子は2バイト長であることに注意せよ. 
+sfModAmtSrcOperはsfModulator列挙型の値をとる. 未知や未定義の値は無視される. sfModAmtSrcOperがlinkにセットされている場合そのモジュレーターは無視される. sfModAmtSrcOperで指定されたモジュレーター入力が, sfModSrcOperで指定されたモジュレーター入力に対する出力の度合いをコントロールすることになる. この列挙子は2バイト長であることに注意せよ.  
 (訳注: PMODのsfModAmtSrcOperの訳注と同様である. )
 
 sfTransOperはSFTransform列挙型の値をとる. 未知や未定義の値は無視される. モジュレーターで利用される前の段階で, この値が指す種類の変換がモジュレーター入力に適用される. この列挙子は2バイト長であることに注意せよ.
@@ -944,7 +978,8 @@ struct sfInstGenList
     SFGenerator sfGenOper;
     genAmountType genAmount;
 };
-```
+```  
+
 (訳注: 本来は次の説明がここに書かれるべきだが原文では抜かれている. インストゥルメントゾーンのwGenNdxはそのインストゥルメントゾーンで使われる最初のジェネレーターのインデックスであり, インストゥルメントゾーンで使われるジェネレーターの数は (次のインストゥルメントゾーンのwInstGenNdx) - (現在のインストゥルメントゾーンのwGenInstNdx) で求められる. もしこの差が0ならばそのインストゥルメントゾーンにはジェネレーターが1つもないことを意味する.)
 
 genAmountType型はPGENサブチャンクの説明と同様に定義されている.
@@ -1121,14 +1156,137 @@ Vibrato LFOの三角波の周波数を絶対cent単位で表すもの. 値0な�
 ディレイ終了からModulation Envのピークに達するまでかかる時間を絶対timecent単位で表したもの. 0の値なら1秒となる. アタックは"convex"であることに注意せよ. convexの曲線はdecibelやsemitoneパラメーターにこの曲線がそれぞれ適用されたときに振幅やHzに比例するような形をしている. 値0ならアタックは1秒である. 負の値なら1秒より短く, 正の値なら1秒より長くなる. 値が最小値(-32768)であるときは慣習的に瞬間的なアタックとなる. 例えば, 10msecのアタックならば attackModEnv = 1200log2(.01) = -7973となる.
 
 #### 27 : holdModEnv
-アタック終了からディケイ開始までの時間(Modulation Envがピークに保たれている時間)を絶対timecent単位で表したもの. 0の値なら1秒のとなる. 負の値なら1秒より短く, 正の値なら1秒より長くなる. 値が最小値(-32768)であるときは慣習的にホールドの段階はないことになる. 例えば, 10msecのディレイならば holdModEnv = 1200log2(.01) = -7973となる.
+アタック終了からディケイ開始までの時間(Modulation Envがピークに保たれている時間)を絶対timecent単位で表したもの. 0の値なら1秒となる. 負の値なら1秒より短く, 正の値なら1秒より長くなる. 値が最小値(-32768)であるときは慣習的にホールドはないことになる. 例えば, 10msecのディレイならば holdModEnv = 1200log2(.01) = -7973となる.
 
 #### 28 : decayModEnv
-ディケイの段階でModulation Envの変化が100%完了するまでのを絶対timecent単位で表したもの. 0の値なら1秒のとなる. Modulation Envは, ディケイの段階ではサステインの高さまでまっすぐ向かって傾いている. もしサステインの高さが0なら, decayModEnvはディケイにかかる時間となる. 0の値なら1秒の負の値ならディレイは1秒より短く, 正の値ならディレイは1秒より長くなる. 値が最小値(-32768)であるときは慣習的にディレイはないことになる. 例えば, 10msecのディレイならば holdModEnv = 1200log2(.01) = -7973となる.
+ディケイの段階でのModulation Envの変化が100%完了するまでの時間を絶対timecent単位で表したもの. 0の値なら1秒のとなる. Modulation Envは, ディケイの段階ではサステインの高さまでまっすぐ向かって傾いている. もしサステインの高さが0なら, decayModEnvはディケイにかかる時間となる. 0の値なら1秒のディケイ. 負の値ならディケイは1秒より短く, 正の値ならディケイは1秒より長くなる. 値が最小値(-32768)であるときは慣習的にディケイはないことになる. 例えば, 10msecのディケイならば decayModEnv = 1200log2(.01) = -7973となる.
 
-ジェネレーターは他にもたくさんあるが和訳が完成していない. そこは原文を参照すること.
-ここから8.2まで和訳していない. 
+#### 29 : sustainModEnv
+ディケイの段階のでのModulation Envの値の減衰の度合いを0.1%単位で表したもの. Modulation Envでは, サステインの高さは最大値の割合(%)で表現される. volume envのサステインの高さは最大値からの減衰で表現されるため, このサステインの高さも同様に最大値からの減衰度で表される. 0はサステインの高さが最大であることを示す. 正の値ならば対応する高さにディケイする. 負の値ならば0として解釈される. 1000以上の値を取るならば1000として解釈される. 例えば, ピークの40%のサステインの高さを取るならば sustainModEnv = 600 となる.
 
+#### 30 : releaseModEnv
+リリースの段階でのModulation Envの変化が100%完了するまでの時間を絶対timecent単位で表すもの. Modulation Envでは, リリースは現在の高さから0へ直線的に向かう. もし現在の高さが最大ならば, Modulation Envのリリースの時間はゼロの高さに達するまでの時間となる. 0の値を取るならば最大値からのリリース時間は1秒である. 負の値を取るならば1秒以下, 正の値ならば1秒以上となる. 例えば, 10msecのリリースならば releaseModEnv = 1200log2(.01) = -7973となる.
+
+#### 31 : keynumToModEnvHold
+Modulation Envが MIDI key numberが1つ上がるごとにホールドの時間が減る度合いを相対timecent単位で表したもの. key number 60でのホールド時間は変化しない. 100の値を取るならば1オクターブ上がるとホールド時間は半分になる.  
+(訳注: 念のため解説すると(keynumToModEnvHold = 100) * (key数=12) = 1200timecents減る, つまり-1200timecentsになるので2^(-1200/1200)=1/2倍の時間になる. 絶対timecentsとは違う扱い方をするので注意する. 考え方としては, 絶対timecentsは相対timecentsの元の値を0にしたものと考えれば良い, つまりlog2内の値が1と考えれば良い. あまりわかりやすい説明はできないが.  
+相対timecents + 1200log2(t) = 絶対timecents ここでtは基準となる時間. この式では和の演算だが, 対数の和の演算は普通の時間で考えると積に対応する, ということを考えると良い, 相対timecents=1200の時は絶対timecents = 1200 + 1200log2(t) = 1200log2(2t)となり2t時間になる. 相対timecentsが-1200timecentsの場合はt*(1/2)時間となる)
+
+例えば, Modulation Envのホールド時間が -7973　= 10msecでKeyNumberToModEnvHold = 50 でkey number 36が鳴ると, ホールド時間は20msecである.
+(訳注: -(50 * (60-36))相対timecents減少する, つまり+1200相対timecents増える, よって上で考えたことから2倍になる.)
+
+#### 32 : keynumToModEnvDecay
+Modulation Envが MIDI key numberが1つ上がるごとにディケイの時間が減る度合いを相対timecent単位で表したもの. key number 60でのディケイ時間は変化しない. 100の値を取るならば1オクターブ上がるとディケイ時間は半分になる.  例えば, Modulation Envのディケイ時間が -7973　= 10msecでKeyNumberToModEnvDecay = 50 でkey number 36が鳴ると, ディケイ時間は20msecである.
+(訳注: 原文では上をコピペしたのかところどころディケイがホールドと誤記になっている)
+
+#### 33 : delayVolEnv 
+キーオンからアタック開始までのVolume Envのディレイタイムを絶対timecent単位で表したもの. 0の値なら1秒のディレイとなる. 負の値ならディレイは1秒より短く, 正の値ならディレイは1秒より長くなる. 値が最小値(-32768)であるときは慣習的にディレイはないことになる. 例えば, 10msecのディレイならば delayVolEnv = 1200log2(.01) = -7973となる.
+
+#### 34 : attackVolEnv
+ディレイ終了からVolume Envのピークに達するまでかかる時間を絶対timecent単位で表したもの. 0の値なら1秒となる. アタックは"convex"であることに注意せよ. convexの曲線はdecibelパラメーターにこの曲線が適用されたときに振幅に比例するような形をしている. 値0ならアタックは1秒である. 負の値なら1秒より短く, 正の値なら1秒より長くなる. 値が最小値(-32768)であるときは慣習的に瞬間的なアタックとなる. 例えば, 10msecのアタックならば attackVolEnv = 1200log2(.01) = -7973となる.
+
+#### 35 : holdVolEnv
+アタック終了からディケイ開始までの時間(Volume Envがピークに保たれている時間)を絶対timecent単位で表したもの. 0の値なら1秒となる. 負の値なら1秒より短く, 正の値なら1秒より長くなる. 値が最小値(-32768)であるときは慣習的にホールドはないことになる. 例えば, 10msecのディレイならば holdVolEnv = 1200log2(.01) = -7973となる.
+
+#### 36 : decayVolEnv
+ディケイの段階でのVolume Envの変化が100%完了するまでの時間を絶対timecent単位で表したもの. 0の値なら1秒のとなる. Volume Envは, ディケイの段階ではサステインの高さまでまっすぐ向かって傾いている.  (訳注: dbという対数的な単位とtimecentが比例するということである)  
+もしサステインの高さが-100dBならば, Volume Envのディケイ時間はディケイの段階でかかる時間となる.  (訳注: -100dBの説明が意味不明と思われるが, Volumeを考えるときはdBは対数的なので, 極めて音量0に近いのであることを考えれば良い. 音量0は対数では-∞になってしまう, ちなみに-100dBは10^())
+
+値が0なら, 0の高さまでのディケイにかかる時間は1秒となる. 0の値なら1秒の負の値ならディケイは1秒より短く, 正の値ならディケイは1秒より長くなる. 値が最小値(-32768)であるときは慣習的にディケイはないことになる. 例えば, 10msecのディケイならば DecayVolEnv = 1200log2(.01) = -7973となる.
+
+#### 37 : sustainVolEnv
+ディケイの段階でのVolume Envの値の減衰を絶対cB単位で表したもの. Volume Envでは, サステインの高さは最大値からの減衰割合(%)で表現される. volume envのサステインの高さは最大値からの減衰で表現されるため, このサステインの高さも同様に最大値からの減衰度で表される. 0はサステインの高さが最大であることを示す. 正の値ならば対応する高さにディケイする. 負の値ならば0として解釈される. 1000以上の値を取るならば1000として解釈される. 例えば, sustainVolEnv = 120ならば12dBピークから減少となる.
+
+
+#### 38 : releaseVolEnv
+リリースの段階でのVolume Envの変化が100%完了するまでの時間を絶対timecent単位で表すもの. Volume Envでは, リリースは現在の高さから0へ直線的に向かう(dB単位の高さが絶対timecent単位の時間に対して直線的という意味で). もし現在の高さが最大ならば, Volume Envのリリースの時間は100dB減衰するまでの時間となる. 0の値を取るならば最大値からのリリース時間は1秒である. 負の値を取るならば1秒以下, 正の値ならば1秒以上となる. 例えば, 10msecのリリースならば releaseVolEnv = 1200log2(.01) = -7973となる.
+
+#### 39 : keynumToVolEnvHold
+Volume Envが MIDI key numberが1つ上がるごとにホールドの時間が減る度合いを相対timecent単位で表したもの. key number 60でのホールド時間は変化しない. 100の値を取るならば1オクターブ上がるとホールド時間は半分になる.  
+(訳注: 念のため解説すると(keynumToVolEnvHold = 100) * (key数=12) = 1200timecents減る, つまり-1200timecentsになるので2^(-1200/1200)=1/2倍の時間になる. 絶対timecentsとは違う扱い方をするので注意する. 考え方としては, 絶対timecentsは相対timecentsの元の値を0にしたものと考えれば良い, つまりlog2内の値が1と考えれば良い. あまりわかりやすい説明はできないが.  
+相対timecents + 1200log2(t) = 絶対timecents ここでtは基準となる時間. この式では和の演算だが, 対数の和の演算は普通の時間で考えると積に対応する, ということを考えると良い, 相対timecents=1200の時は絶対timecents = 1200 + 1200log2(t) = 1200log2(2t)となり2t時間になる. 相対timecentsが-1200timecentsの場合はt*(1/2)時間となる)
+
+例えば, Volume Envのホールド時間が -7973timecents　= 10msecでKeyNumberToVolumeEnvHold = 50 でkey number 36が鳴ると, ホールド時間は20msecである.
+(訳注: -(50 * (60-36))相対timecents減衰する, つまり+1200相対timecentsである, よって上で考えたことから2倍の時間になる.)
+
+#### 40 : keynumToVolEnvDecay
+Volume Envが MIDI key numberが1つ上がるごとにディケイの時間が減る度合いを相対timecent単位で表したもの. key number 60でのディケイ時間は変化しない. 100の値を取るならば1オクターブ上がるとディケイ時間は半分になる.  例えば, Volume Envのディケイ時間が -7973　= 10msecでKeyNumberToVolEnvDecay = 50 でkey number 36が鳴ると, ディケイ時間は20msecである.
+(訳注: 原文では上をコピペしたのかところどころディケイがホールドと誤記になっている)
+
+#### 41 : instrument 
+そのプリセットゾーンに使われるインストゥルメントのINSTサブチャンク内のインデックスを表す. 値が0ならばINSTサブチャンクの最初のインストゥルメントが使われる. instrument listのサイズ-2の値を超えてはいけない.  
+(訳注: 終端インストゥルメントは選択できないのだろう)  
+インストゥルメント列挙体はPGENのゾーンの最後のジェネレーターでなくてはならない.(グローバルプリセットゾーンをのぞいて)
+
+#### 42 : reserved
+未使用. 予約用. 無視される.
+
+#### 43 : keyRange
+そのプリセットゾーンやインストゥルメントゾーンが使われるときのMIDI key numberが有効な最小値と最大値を表す. Lower byteは最大値, Higher byteは最小値を表す. keyRange列挙体を使うのは任意だが, もし使われるならばゾーン内の最初のジェネレーターでなくてはならない.
+
+#### 44 : velRange
+そのプリセットゾーンやインストゥルメントゾーンが使われるときのMIDI vel numberが有効な最小値と最大値を表す. Lower byteは最大値, Higher byteは最小値を表す. velRange列挙体を使うのは任意だが, もし使われるならばゾーン内ので先にあっていいのはkeyRangeジェネレーターのみである, つまりkeyRangeが最初にあるならその次にvelRangeが来なくてはならないし, keyRangeがないならばvelRangeが最初に来なくてはならない.
+
+#### 45 : startloopAddrsCoarseOffset 
+32768のサンプルデータポイントを1単位としてStartloopサンプルヘッダーのパラメータからこのインストゥルメントのループが始まるサンプルデータポイントへのオフセットを表す. このパラメーターはstartloopAddrsOffsetパラメーターと合わせて考える. 例えば, Startloop=5, startloopAddrsOffset=3, startloopAddrsCoarseOffset=2ならばループ開始のサンプルデータポイントは65544となる.
+(訳注: Startloop + startloopAddrsOffset + startloopAddrsCoarseOffset * 32768に代入すれば良い)
+
+#### 46 : keynum
+この列挙体はどのMIDI key numberとして解釈するかを定める. このジェネレーターはインストゥルメントレベルでのみ使用される. 0から127の値を有効値とする.
+
+#### 47 : velocity
+この列挙体はどのMIDI velocityとして解釈するかを定める. このジェネレーターはインストゥルメントレベルでのみ使用される. 0から127までの値をとる.
+
+#### 48 : initalAttenuation
+音が全体からどれだけ減衰したかをcB単位で表す. 0の値ならば減衰しない, つまりそのままの音になる. 例えば, initialAttenuation = 60 ならば音は6dB小さくなる.
+
+#### 49 : reserved2 
+未使用, 予約用. 無視される.
+
+#### 50 : endloopCoarseOffset
+32768のサンプルデータポイントを1単位としてEndloopサンプルヘッダーのパラメータを基準として, このインストゥルメントのループが始まるサンプルデータポイントと等しいサンプルデータポイントへのオフセットを表す. このパラメーターはendloopAddrsOffsetパラメーターと合わせて考える. 例えば, Endloop=5, endloopAddrsOffset=3, endloopAddrsCoarseOffset=2ならばループ開始のサンプルデータポイントは65544となる.
+(訳注: Endloop + endloopAddrsOffset + endloopAddrsCoarseOffset * 32768に代入すれば良い)
+
+#### 51 : coarseTune
+音のsemitone(半音)単位のピッチ変化のオフセットを表す. 正の値ならより高い音, 負の値ならより低い音となる. 例えば, coarseTune = -4 ならば4semitone下がる.
+
+#### 52 : fineTune
+音のcents単位でのピッチ変化のオフセットを表す. coarseTuneと合わせて考える. 正の値ならより高い音に, 負の値ならより低い音になる. 例えば, fineTune = -5 ならば5cent低くなる.
+
+#### 53 : sampleID
+そのインストゥルメントゾーンに使われるサンプルのSHDRサブチャンク内のインデックスを表す. 値が0ならばSHDRサブチャンクの最初のサンプルが使われる. sample listのサイズ-2の値を超えてはいけない.  
+(訳注: 終端サンプルは選択できないのだろう)  
+sampleID列挙体はIGENのゾーンの最後のジェネレーターでなくてはならない.(グローバルインストゥルメントゾーンをのぞいて)
+
+#### 54 : sampleModes
+この列挙体はそのインストゥルメントゾーンのサンプルに関する様々なフラグを定める. sampleModesジェネレーターはIGENサブチャンクでのみ使用され, グローバルゾーンでは使用されない. 一番下の2つのbitはサンプルのloopタイプを示す.  
+0: no loop
+1: 連続してloopする.
+2: 未使用の値だが, no loopとして扱う.
+3: keyが押されている間だけループし, その後サンプルの残りを再生する.
+
+#### 55 : reserved3
+未使用, 予約用. 無視される.
+
+#### 56 : scaleTuning
+このパラメーターはMIDI key numberによって影響を受けるピッチの度合いを表す. 値が0ならばMIDI key numberによってピッチは変化しない. 値が100ならば通常のように半音ごとに変化する.
+
+#### 57 : exclusiveClass
+このパラメーターはそのインストゥルメントのkeyが押されると他のインストゥルメントの再生を止める効果を与える. 特にハイハットシンバルのようなパーカッションのインストゥルメントに有用である. 値が0ならば排他クラスは利用せず, 特に何も起きない. 他の値ならば, この音が鳴り始めると, 他の同じexclusiveClassの値をもつ音の再生は止まる. excludiveClassジェネレーターはインストゥルメントのレベルでのみ使われる. exclusiveクラスのスコープはそのプリセット内全体である. つまり, 同じプリセットで同じexclusiveClassの値をもつインストゥルメントゾーンは止まる.
+
+#### 58 : overridingRootKey 
+このパラメーターは元のサンプルレートでの再生に対するMIDI key numberを定める. もし存在しなかったり, -1の値を取る場合はサンプルヘッダーのOriginal Keyパラメーターがここで使われる. 0-127の値を取るならば, その値に対応するkey numberでサンプルヘッダーのサンプルレートで再生される. 例えば, サンプルがピアノのmiddle C(Original Key = 60)でサンプルレートが 22.050kHz, root Key = 69 に設定されている場合, MIDI key number 69 (A above middle C)はmiddle Cの音を再生する. 
+
+#### 59 : unused5
+未使用, 予約用. 無視される.
+
+#### 60 : endOver 
+未使用, 予約用. 無視される. Unique name provides value to end of defined list.
+
+### 8.1.3 ジェネレーターのまとめ
+次の表はSoundFont2.xで定義されたジェネレーターの有効値, デフォルト値を示す.
+![](2019-08-11-10.49.45.png)
+![](2019-08-11-10.58.43.png)
 ## 8.2 Modulator Source Enumerators
 Section8.2ではSoundFontモジュレーターenumを定義するが, Section9.5ではSoundFontモジュレーターの動作原理を記述している.
 sfModulatorのenum値は実際には,index値とsource typeやsource palletesを定めるbitフィールドを組み合わせたものであり,index値はジェネレーターで言うsfGeneratorのenum値に当たるものでModulator sourceを指定する実質的な値である.
